@@ -9,12 +9,11 @@ export default defineConfig({
       registerType: 'autoUpdate',
 
       devOptions: {
-        enabled: true
+        enabled: false
       },
 
       includeAssets: [
         'favicon.ico',
-        'apple-touch-icon.png',
         'icon-192.png',
         'icon-512.png'
       ],
@@ -23,16 +22,22 @@ export default defineConfig({
         name: 'Music Studio',
         short_name: 'VermaJi',
         description: 'Music app',
-        theme_color: '#000000',
-        background_color: '#000000',
-        display: 'standalone',
-        orientation: 'portrait',
+
         start_url: '/',
+        scope: '/',
+        display: 'standalone',
+
+        background_color: '#000000',
+        theme_color: '#000000',
+
+        orientation: 'portrait',
+
         icons: [
           {
             src: '/icon-192.png',
             sizes: '192x192',
-            type: 'image/png'
+            type: 'image/png',
+            purpose: 'any maskable'
           },
           {
             src: '/icon-512.png',
