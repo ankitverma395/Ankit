@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================= BASE ================= */
+@layer base {
+  body {
+    @apply min-h-screen antialiased transition-colors duration-300;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  /* 🌞 LIGHT MODE (Premium Gradient) */
+  body {
+    @apply bg-gradient-to-br from-gray-100 via-white to-purple-100 text-gray-900;
+  }
+
+  /* 🌙 DARK MODE */
+  .dark body {
+    @apply bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-300/40 dark:bg-white/5 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 dark:bg-purple-500/50 rounded-full 
+    hover:bg-gray-500 dark:hover:bg-purple-500;
+  }
+}
+
+/* ================= COMPONENTS ================= */
+@layer components {
+
+  /* 🌟 Glass Effect */
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-gray-200/60;
+  }
+
+  .dark .glass {
+    @apply bg-white/5 border-white/10;
+  }
+
+  .glass-card {
+    @apply rounded-2xl transition-all duration-300 
+    shadow-md hover:shadow-xl hover:shadow-purple-200;
+  }
+
+  .dark .glass-card {
+    @apply hover:shadow-purple-500/10;
+  }
+
+  .glass-sidebar {
+    @apply bg-white/70 backdrop-blur-xl border-r border-gray-200/60;
+  }
+
+  .dark .glass-sidebar {
+    @apply bg-black/40 border-white/10;
+  }
+
+  /* 🧭 Navigation */
+  .nav-item {
+    @apply flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-200 
+    cursor-pointer text-gray-600 hover:text-black hover:bg-gray-200/60;
+  }
+
+  .dark .nav-item {
+    @apply text-gray-300 hover:text-white hover:bg-white/10;
+  }
+
+  .nav-item-active {
+    @apply bg-purple-100 text-purple-600 border-l-4 border-purple-500;
+  }
+
+  .dark .nav-item-active {
+    @apply bg-purple-500/20 text-purple-400;
+  }
+
+  /* 🎵 Player Buttons */
+  .player-btn {
+    @apply p-2 rounded-full transition-all duration-200 
+    hover:bg-gray-200 hover:scale-105 active:scale-95;
+  }
+
+  .dark .player-btn {
+    @apply hover:bg-white/10;
+  }
+
+  .player-btn-primary {
+    @apply p-3 rounded-full bg-purple-500 text-white 
+    hover:bg-purple-600 shadow-lg shadow-purple-300;
+  }
+
+  .dark .player-btn-primary {
+    @apply shadow-purple-500/30;
+  }
+
+  /* 📊 Progress Bar */
+  .progress-bar {
+    @apply h-1.5 bg-gray-300 rounded-full overflow-hidden cursor-pointer;
+  }
+
+  .dark .progress-bar {
+    @apply bg-white/20;
+  }
+
+  .progress-fill {
+    @apply h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full;
+  }
+
+  /* 🔘 Buttons */
+  .btn-primary {
+    @apply px-6 py-2.5 bg-gradient-to-r from-purple-500 to-pink-500 
+    rounded-full font-semibold text-white 
+    transition-all duration-200 
+    hover:opacity-90 hover:shadow-lg hover:shadow-purple-300 active:scale-95;
+  }
+
+  .dark .btn-primary {
+    @apply hover:shadow-purple-500/30;
+  }
+
+  /* 🔍 Input */
+  .input-glass {
+    @apply w-full px-4 py-3 
+    bg-white border border-gray-300 
+    rounded-xl text-gray-900 
+    focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 
+    transition-all shadow-sm;
+  }
+
+  .dark .input-glass {
+    @apply bg-white/5 border-white/10 text-white;
+  }
+}
+
+/* ================= MOBILE FIX ================= */
+.progress-bar {
+  @apply h-1.5;
+}
+
+@media (max-width: 640px) {
+  .progress-bar {
+    @apply h-3;
+  }
+}
+
+/* ================= RANGE SLIDER ================= */
+input[type="range"] {
+  -webkit-appearance: none;
+  background: rgba(0,0,0,0.2);
+  border-radius: 9999px;
+}
+
+.dark input[type="range"] {
+  background: rgba(255,255,255,0.2);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* ================= SYSTEM ================= */
+html.dark {
+  color-scheme: dark;
+}
