@@ -9,7 +9,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
 
       devOptions: {
-        enabled: true   // 👈 DEV me bhi PWA enable
+        enabled: true
       },
 
       includeAssets: [
@@ -49,6 +49,8 @@ export default defineConfig({
   },
 
   preview: {
-    port: 4173
+    host: true,
+    port: process.env.PORT,
+    allowedHosts: 'all'
   }
 })
