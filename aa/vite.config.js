@@ -9,14 +9,14 @@ export default defineConfig({
       registerType: 'autoUpdate',
 
       devOptions: {
-        enabled: false // ✅ IMPORTANT FIX
+        enabled: false
       },
 
       workbox: {
         runtimeCaching: [
           {
-            urlPattern: /^http:\/\/localhost:5000\/api\/.*/i,
-            handler: 'NetworkOnly' // ✅ API always from backend
+            urlPattern: ({ url }) => url.pathname.startsWith('/api/'),
+            handler: 'NetworkOnly'
           }
         ]
       },
@@ -29,13 +29,26 @@ export default defineConfig({
         display: 'standalone',
         start_url: '/',
         icons: [
-          { src: '/icon-192.png', sizes: '192x192', type: 'image/png' },
-          { src: '/icon-512.png', sizes: '512x512', type: 'image/png' }
+          {
+            src: '/icon-192.png',
+            sizes: '192x192',
+            type: 'image/png'
+          },
+          {
+            src: '/icon-512.png',
+            sizes: '512x512',
+            type: 'image/png'
+          }
         ]
       }
     })
   ],
 
-  server: { port: 5173 },
-  preview: { port: 4173 }
+  server: {
+    port: 5173
+  },
+
+  preview: {
+    port: 4173
+  }
 })
