@@ -4,13 +4,22 @@ import App from './App.jsx'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import './index.css'
+import { BrowserRouter } from 'react-router-dom'
+
+// 🔥 SAFE SW REGISTER (NO CRASH)
 import { registerSW } from 'virtual:pwa-register'
 
-// ✅ SAFE SW REGISTER
-registerSW({
-  immediate: true,
+const updateSW = registerSW({
+  immediate: false,   // ⚠️ IMPORTANT FIX
   onOfflineReady() {
     console.log('App ready for offline use')
+  },
+  onNeedRefresh() {
+    console.log('New version available')
   }
 })
 
