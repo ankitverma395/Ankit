@@ -9,15 +9,17 @@ export default defineConfig({
       registerType: 'autoUpdate',
       strategies: 'generateSW',
 
-      includeAssets: ['favicon.ico'],
-
       manifest: {
+        id: '/',
         name: 'Music Studio',
         short_name: 'VermaJi',
+        description: 'Music app',
         start_url: '/',
+        scope: '/',
         display: 'standalone',
-        background_color: '#000',
-        theme_color: '#000',
+        background_color: '#000000',
+        theme_color: '#000000',
+
         icons: [
           {
             src: '/icon-192.png',
@@ -30,12 +32,6 @@ export default defineConfig({
             type: 'image/png'
           }
         ]
-      },
-
-      workbox: {
-        cleanupOutdatedCaches: true,
-        clientsClaim: true,
-        skipWaiting: true
       }
     })
   ]
